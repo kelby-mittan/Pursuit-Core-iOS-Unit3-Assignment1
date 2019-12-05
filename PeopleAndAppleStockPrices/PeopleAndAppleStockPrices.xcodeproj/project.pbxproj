@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		024F1698239968CD0099FA18 /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F1697239968CD0099FA18 /* ImageClient.swift */; };
+		024F169A23997D410099FA18 /* AppleStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F169923997D410099FA18 /* AppleStock.swift */; };
+		024F169C23997EF10099FA18 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F169B23997EF10099FA18 /* Bundle+Extensions.swift */; };
+		024F169E239980F60099FA18 /* AppleStockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F169D239980F60099FA18 /* AppleStockTests.swift */; };
 		025142D523985525008D5C36 /* AppleStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025142D423985525008D5C36 /* AppleStockViewController.swift */; };
 		025142DD23985539008D5C36 /* PeopleAndAppleStockPricesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025142DC23985539008D5C36 /* PeopleAndAppleStockPricesTests.swift */; };
 		025142E52398556C008D5C36 /* RanUserDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025142E42398556C008D5C36 /* RanUserDetailController.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		024F1697239968CD0099FA18 /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
+		024F169923997D410099FA18 /* AppleStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStock.swift; sourceTree = "<group>"; };
+		024F169B23997EF10099FA18 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		024F169D239980F60099FA18 /* AppleStockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStockTests.swift; sourceTree = "<group>"; };
 		025142D423985525008D5C36 /* AppleStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStockViewController.swift; sourceTree = "<group>"; };
 		025142DA23985539008D5C36 /* PeopleAndAppleStockPricesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeopleAndAppleStockPricesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		025142DC23985539008D5C36 /* PeopleAndAppleStockPricesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleAndAppleStockPricesTests.swift; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				025142DC23985539008D5C36 /* PeopleAndAppleStockPricesTests.swift */,
+				024F169D239980F60099FA18 /* AppleStockTests.swift */,
 				025142DE23985539008D5C36 /* Info.plist */,
 			);
 			path = PeopleAndAppleStockPricesTests;
@@ -106,6 +113,8 @@
 				024F1697239968CD0099FA18 /* ImageClient.swift */,
 				025142D423985525008D5C36 /* AppleStockViewController.swift */,
 				025142E62398559A008D5C36 /* AppleStockDetailController.swift */,
+				024F169923997D410099FA18 /* AppleStock.swift */,
+				024F169B23997EF10099FA18 /* Bundle+Extensions.swift */,
 				577E5BEF21BA8BA10083EB97 /* Main.storyboard */,
 				577E5BFD21BA8BE20083EB97 /* Supporting Files */,
 				577E5BF721BA8BA20083EB97 /* Info.plist */,
@@ -238,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				025142DD23985539008D5C36 /* PeopleAndAppleStockPricesTests.swift in Sources */,
+				024F169E239980F60099FA18 /* AppleStockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				577E5BEE21BA8BA10083EB97 /* RanUserViewController.swift in Sources */,
+				024F169A23997D410099FA18 /* AppleStock.swift in Sources */,
 				025142D523985525008D5C36 /* AppleStockViewController.swift in Sources */,
+				024F169C23997EF10099FA18 /* Bundle+Extensions.swift in Sources */,
 				577E5BEC21BA8BA10083EB97 /* AppDelegate.swift in Sources */,
 				025142E72398559A008D5C36 /* AppleStockDetailController.swift in Sources */,
 				025142E92398562B008D5C36 /* Users.swift in Sources */,
