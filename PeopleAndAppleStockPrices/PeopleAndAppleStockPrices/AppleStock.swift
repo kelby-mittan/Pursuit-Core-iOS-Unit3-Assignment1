@@ -12,6 +12,7 @@ struct AppleStockData: Codable {
     let open: Double
     let close: Double
     let label: String
+    let date: String
 }
 
 extension AppleStockData {

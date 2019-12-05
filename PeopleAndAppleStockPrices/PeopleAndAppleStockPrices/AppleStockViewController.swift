@@ -12,7 +12,6 @@ class AppleStockViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     var stockArr = [[AppleStockData]]() {
         didSet {
             tableView.reloadData()
@@ -35,12 +34,13 @@ class AppleStockViewController: UIViewController {
         var sum = 0.0
         var avg = Double()
         for stock in arr {
-            sum = sum + stock.close
+            sum += stock.open
         }
         
         avg = sum / Double(arr.count)
         return avg
     }
+    
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     //        guard let stockVC = segue.destination as? AppleStockDetailController, let indexPath = tableView.indexPathForSelectedRow else {
     //            return
@@ -64,7 +64,7 @@ extension AppleStockViewController: UITableViewDataSource {
         
         let stock = stockArr[indexPath.section][indexPath.row]
         
-        cell.textLabel?.text = "\(stock.label)"
+        cell.textLabel?.text = "\(stock.date)"
         cell.detailTextLabel?.text = "\(stock.open.description)"
         
         return cell
@@ -79,7 +79,7 @@ extension AppleStockViewController: UITableViewDataSource {
         let avg = getAvg(for: stockArr[section])
         let month = stockArr[section].first?.label.components(separatedBy: " ").first ?? ""
         let year = stockArr[section].first?.label.components(separatedBy: " ").last ?? ""
-        return "\(month) - 20\(year)     AVG: \(String(format: "%.2f", avg))"
+        return "\(month) - 20\(year), average open: \(String(format: "%.2f", avg))"
     }
     
     

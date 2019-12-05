@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct UserData: Codable {
+struct UserData: Decodable {
     let results: [Users]
 }
 
-struct Users: Codable {
+struct Users: Decodable {
     let name: Name
     let email: String
     let location: Location
@@ -22,7 +22,7 @@ struct Users: Codable {
     
 }
 
-struct Picture: Codable {
+struct Picture: Decodable {
     let large: String
     
     private enum CodingKeys: String, CodingKey {
@@ -30,10 +30,16 @@ struct Picture: Codable {
     }
 }
 
-struct Name: Codable {
+struct Name: Decodable {
     let title: String
     let firstName: String
     let lastName: String
+    var fullName: String {
+        "\(firstName) \(lastName)"
+    }
+    var fullNameReversed: String {
+        "\(lastName) \(firstName)"
+    }
     
     private enum CodingKeys: String, CodingKey {
         case title
@@ -42,49 +48,13 @@ struct Name: Codable {
     }
 }
 
-struct Location: Codable {
+struct Location: Decodable {
     let street: String
     let city: String
     let state: String
     let postcode: String
 }
 
-
-enum Postcode: Codable {
-    func encode(to encoder: Encoder) throws {
-        return
-    }
-    case int(Int), string(String)
-
-    init(from decoder: Decoder) throws {
-        if let int = try? decoder.singleValueContainer().decode(Int.self) {
-            self = .int(int)
-            return
-        }
-
-        if let string = try? decoder.singleValueContainer().decode(String.self) {
-            self = .string(string)
-            return
-        }
-
-        throw QuantumError.missingValue
-    }
-
-    enum QuantumError:Error {
-        case missingValue
-    }
-    
-    func extractValue() -> String {
-        var result = ""
-        switch self {
-        case .int(let value):
-            result = value.description
-        case .string(let valueStr):
-            result = valueStr
-        }
-        return result
-    }
-}
 
 extension UserData {
     static func getUsers() -> [Users] {
