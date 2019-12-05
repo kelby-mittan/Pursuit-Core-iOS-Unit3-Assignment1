@@ -13,12 +13,24 @@ struct UserData: Codable {
 }
 
 struct Users: Codable {
-    let name: [String : String]
+    let name: Name
     let email: String
     let location: Location
     let phone: String
     let dob: String
     
+}
+
+struct Name: Codable {
+    let title: String
+    let firstName: String
+    let lastName: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case title
+        case firstName = "first"
+        case lastName = "last"
+    }
 }
 
 struct Location: Codable {

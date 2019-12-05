@@ -26,7 +26,7 @@ class RanUserViewController: UIViewController {
     }
     
     func loadData() {
-        userArr = UserData.getUsers().sorted { $0.name["last"]! < $1.name["last"]! }
+        userArr = UserData.getUsers().sorted { $0.name.lastName < $1.name.lastName }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,8 +57,10 @@ extension RanUserViewController: UITableViewDataSource {
         
         var city = user.location.city
         var state = user.location.state
+        var firstName = user.name.firstName
+        var lastName = user.name.lastName
         
-        guard var firstName = user.name["first"], var lastName = user.name["last"], let capOne = firstName.first?.uppercased(), let capTwo = lastName.first?.uppercased(), let cityCap = user.location.city.first?.uppercased(), let stateCap = user.location.state.first?.uppercased() else {
+        guard let capOne = firstName.first?.uppercased(), let capTwo = lastName.first?.uppercased(), let cityCap = user.location.city.first?.uppercased(), let stateCap = user.location.state.first?.uppercased() else {
             fatalError()
         }
         firstName.removeFirst()
