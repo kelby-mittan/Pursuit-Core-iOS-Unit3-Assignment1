@@ -17,28 +17,17 @@ struct Users: Codable {
     let email: String
     let location: Location
     let phone: String
-    let dob: DOB
+    let dob: String
     
 }
 
 struct Location: Codable {
-    let street: Street
+    let street: String
     let city: String
     let state: String
-    let country: String
-    let postcode: Postcode
+    let postcode: String
 }
 
-
-struct Street: Codable {
-    let number: Int
-    let name: String
-}
-
-struct DOB: Codable {
-    let date: String
-    let age: Int
-}
 
 enum Postcode: Codable {
     func encode(to encoder: Encoder) throws {
