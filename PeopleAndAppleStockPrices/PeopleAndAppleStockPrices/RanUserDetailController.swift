@@ -46,23 +46,12 @@ class RanUserDetailController: UIViewController {
         guard let validUser = user else {
             fatalError("could not load user")
         }
-        var firstName = validUser.name.firstName
-        var lastName = validUser.name.lastName
-        
-        guard let capOne = firstName.first?.uppercased(), let capTwo = lastName.first?.uppercased() else {
-            fatalError()
-        }
-        
-        firstName.removeFirst()
-        firstName = capOne + firstName
-        lastName.removeFirst()
-        lastName = capTwo + lastName
         
         addressLabel.text = """
-        \(lastName), \(firstName)
+        \(validUser.name.lastName.capitalized), \(validUser.name.firstName.capitalized)
         
-        \(validUser.location.street)
-        \(validUser.location.city), \(validUser.location.state) \(validUser.location.postcode)
+        \(validUser.location.street.capitalized)
+        \(validUser.location.city.capitalized), \(validUser.location.state.capitalized) \(validUser.location.postcode.capitalized)
         """
         
 

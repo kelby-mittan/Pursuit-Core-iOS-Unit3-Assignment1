@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="12B-wQ-Isr">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" textLabel="2ga-Ea-H6P" detailTextLabel="kkL-di-ZxJ" style="IBUITableViewCellStyleSubtitle" id="sl2-C7-4ni">
@@ -49,18 +49,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="u6F-Kw-cHX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="12B-wQ-Isr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="4df-77-bTU"/>
-                            <constraint firstItem="12B-wQ-Isr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5JK-jp-Qsf"/>
                             <constraint firstItem="12B-wQ-Isr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="H44-Dm-qKr"/>
+                            <constraint firstItem="u6F-Kw-cHX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QUx-Wh-E5T"/>
+                            <constraint firstItem="u6F-Kw-cHX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VM2-CC-clR"/>
+                            <constraint firstItem="12B-wQ-Isr" firstAttribute="top" secondItem="u6F-Kw-cHX" secondAttribute="bottom" id="kZF-OC-feo"/>
+                            <constraint firstItem="u6F-Kw-cHX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kkY-ix-lmy"/>
                             <constraint firstItem="12B-wQ-Isr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n4r-rX-AdZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="o9C-oK-LWK"/>
                     <connections>
+                        <outlet property="searchBar" destination="u6F-Kw-cHX" id="ea1-qj-IWm"/>
                         <outlet property="tableView" destination="12B-wQ-Isr" id="A9R-Tr-xbb"/>
                     </connections>
                 </viewController>

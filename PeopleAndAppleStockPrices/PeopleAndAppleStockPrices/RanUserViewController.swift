@@ -11,6 +11,7 @@ import UIKit
 class RanUserViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var userArr = [Users]() {
         didSet {
@@ -18,10 +19,20 @@ class RanUserViewController: UIViewController {
         }
     }
     
+    var searchQuery = "" {
+        didSet {
+            searchQuery.removeAll { char -> Bool in
+                char == " "
+            }
+            userArr = UserData.getUsers().filter { $0.name.lastName.lowercased().contains(searchQuery.lowercased()) || $0.name.firstName.lowercased().contains(searchQuery.lowercased()) || ($0.name.firstName + $0.name.lastName).contains(searchQuery) }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        searchBar.delegate = self
         loadData()
     }
     
@@ -30,11 +41,9 @@ class RanUserViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         guard let userVC = segue.destination as? RanUserDetailController, let indexPath = tableView.indexPathForSelectedRow else {
             return
         }
-        
         userVC.user = userArr[indexPath.row]
     }
     
@@ -52,33 +61,39 @@ extension RanUserViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
         
-        
         let user = userArr[indexPath.row]
         
-        var city = user.location.city
-        var state = user.location.state
-        var firstName = user.name.firstName
-        var lastName = user.name.lastName
-        
-        guard let capOne = firstName.first?.uppercased(), let capTwo = lastName.first?.uppercased(), let cityCap = user.location.city.first?.uppercased(), let stateCap = user.location.state.first?.uppercased() else {
-            fatalError()
-        }
-        firstName.removeFirst()
-        firstName = capOne + firstName
-        lastName.removeFirst()
-        lastName = capTwo + lastName
-        
-        
-        city.removeFirst()
-        city = cityCap + city
-        state.removeFirst()
-        state = stateCap + state
-        
-        cell.textLabel?.text = "\(lastName), \(firstName)"
-        cell.detailTextLabel?.text = "\(city), \(state)"
-        
+        cell.textLabel?.text = "\(user.name.lastName.capitalized), \(user.name.firstName.capitalized)"
+        cell.detailTextLabel?.text = "\(user.location.city.capitalized), \(user.location.state.capitalized)"
         
         return cell
+    }
+    
+    
+}
+
+extension RanUserViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        
+        guard let searchText = searchBar.text else {
+            return
+        }
+        searchQuery = searchText
+
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        guard !searchText.isEmpty else {
+            loadData()
+            return
+        }
+        
+        searchQuery = searchText
+        
     }
     
     
