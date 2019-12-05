@@ -44,7 +44,6 @@ class RanUserViewController: UIViewController {
         userVC.user = userArr[indexPath.row]
     }
     
-    
 }
 
 extension RanUserViewController: UITableViewDataSource {
@@ -92,7 +91,6 @@ extension RanUserViewController: UISearchBarDelegate {
         searchQuery = searchText
         
     }
-    
     
 }
 

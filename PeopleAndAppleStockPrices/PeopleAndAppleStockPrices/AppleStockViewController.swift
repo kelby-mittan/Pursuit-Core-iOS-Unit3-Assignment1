@@ -41,12 +41,12 @@ class AppleStockViewController: UIViewController {
         return avg
     }
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        guard let stockVC = segue.destination as? AppleStockDetailController, let indexPath = tableView.indexPathForSelectedRow else {
-    //            return
-    //        }
-    //        stockVC.stock = stockArr[indexPath.row]
-    //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let stockVC = segue.destination as? AppleStockDetailController, let indexPath = tableView.indexPathForSelectedRow else {
+            return
+        }
+        stockVC.stock = stockArr[indexPath.section][indexPath.row]
+    }
     
     
 }
