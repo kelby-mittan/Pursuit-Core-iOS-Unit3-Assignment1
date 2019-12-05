@@ -12,7 +12,6 @@ struct AppleStockData: Codable {
     let open: Double
     let close: Double
     let label: String
-    
 }
 
 extension AppleStockData {
@@ -20,16 +19,12 @@ extension AppleStockData {
     static func getStocks() -> [AppleStockData] {
         
         var stock = [AppleStockData]()
-        
-        
-        guard let fileURL = Bundle.main.url(forResource: "applestockinfo", withExtension: "json") else {
+        guard let file = Bundle.main.url(forResource: "applestockinfo", withExtension: "json") else {
             fatalError("could not locate json file")
         }
-        
-        
         do {
-            let data = try Data(contentsOf: fileURL)
-                        
+            let data = try Data(contentsOf: file)
+            
             let stockData = try JSONDecoder().decode([AppleStockData].self, from: data)
             stock = stockData
             
@@ -38,5 +33,27 @@ extension AppleStockData {
         }
         
         return stock
+    }
+    
+    static func getStockSections() -> [[AppleStockData]] {
+        
+        let stocks = getStocks()
+        let monthTitles: Set<String> = Set(stocks.map { $0.label })
+        
+        var sectionsArr = Array(repeating: [AppleStockData](), count: monthTitles.count)
+        var currentIndex = 0
+        var currentMonth = stocks.first?.label.components(separatedBy: " ").first ?? ""
+        for stock in stocks {
+            let month = stock.label.components(separatedBy: " ").first ?? ""
+    
+            if month == currentMonth {
+                sectionsArr[currentIndex].append(stock)
+            } else {
+                currentIndex += 1
+                currentMonth = stock.label.components(separatedBy: " ").first ?? ""
+                sectionsArr[currentIndex].append(stock)
+            }
+        }
+        return sectionsArr
     }
 }

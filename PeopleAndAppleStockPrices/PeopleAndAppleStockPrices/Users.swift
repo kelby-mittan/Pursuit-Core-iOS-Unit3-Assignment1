@@ -92,13 +92,12 @@ extension UserData {
         var userArr = [Users]()
         
         
-        guard let fileURL = Bundle.main.url(forResource: "userinfo", withExtension: "json") else {
+        guard let file = Bundle.main.url(forResource: "userinfo", withExtension: "json") else {
             fatalError("could not locate json file")
         }
         
-        
         do {
-            let data = try Data(contentsOf: fileURL)
+            let data = try Data(contentsOf: file)
                         
             let userData = try JSONDecoder().decode(UserData.self, from: data)
             
