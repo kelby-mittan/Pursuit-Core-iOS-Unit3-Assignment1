@@ -74,6 +74,20 @@ class RanUserDetailController: UIViewController {
         
         phoneLabel.text = "Phone: \(validUser.phone)"
         
+        
+        ImageClient.fetchImage(for: validUser.picture.large) { [unowned self] (result) in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.async {
+                        self.contactImage.image = image
+                    }
+                    
+                case .failure(let error):
+                    print("error \(error)")
+                }
+            }
+        
+        
     }
     
 }

@@ -18,7 +18,16 @@ struct Users: Codable {
     let location: Location
     let phone: String
     let dob: String
+    let picture: Picture
     
+}
+
+struct Picture: Codable {
+    let large: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case large = "large"
+    }
 }
 
 struct Name: Codable {
