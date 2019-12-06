@@ -71,6 +71,7 @@ extension AppleStockViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return stockArr.count
     }
     

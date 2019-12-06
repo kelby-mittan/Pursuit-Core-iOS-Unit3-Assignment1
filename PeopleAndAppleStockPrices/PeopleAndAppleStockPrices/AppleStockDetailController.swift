@@ -41,12 +41,3 @@ class AppleStockDetailController: UIViewController {
 
 }
 
-
-//A UIImage
-//A label to represent the date
-//Two labels to represent the opening and closing prices
-//If the stock price went up that day, set the background color to green and make the image a thumbs up.
-//
-//If the stock price went down that day, set the background color to red and make the image a thumbs down.
-//
-//You will need to use Auto Layout to constrain your views.

@@ -37,11 +37,19 @@ extension AppleStockData {
     }
     
     static func getStockSections() -> [[AppleStockData]] {
-        
         let stocks = getStocks()
-        let monthTitles: Set<String> = Set(stocks.map { $0.label })
+        var monthTTitles = Set<String>()
         
-        var sectionsArr = Array(repeating: [AppleStockData](), count: monthTitles.count)
+        for stock in stocks {
+            var label = stock.label
+            var monthYear = label.components(separatedBy: " ")
+            monthYear.remove(at: 1)
+            label = monthYear.joined()
+            monthTTitles.insert(label)
+        }
+        
+        var sectionsArr = Array(repeating: [AppleStockData](), count: monthTTitles.count)
+        
         var currentIndex = 0
         var currentMonth = stocks.first?.label.components(separatedBy: " ").first ?? ""
         for stock in stocks {

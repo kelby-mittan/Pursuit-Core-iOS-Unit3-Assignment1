@@ -60,22 +60,19 @@ class RanUserDetailController: UIViewController {
         }
 
         dobLabel.text = "DOB: \(dateFormatter.string(from: date))"
-        
         phoneLabel.text = "Phone: \(validUser.phone)"
         
-        
-        ImageClient.fetchImage(for: validUser.picture.large) { [unowned self] (result) in
+        ImageClient.fetchImage(for: validUser.picture.large) { [weak self] (result) in
                 switch result {
                 case .success(let image):
                     DispatchQueue.main.async {
-                        self.contactImage.image = image
+                        self?.contactImage.image = image
                     }
                     
                 case .failure(let error):
                     print("error \(error)")
                 }
             }
-        
         
     }
     

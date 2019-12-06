@@ -23,6 +23,23 @@ class PeopleAndAppleStockPricesTests: XCTestCase {
         // assert (then)
         XCTAssertNotNil(data)
     }
+    
+    func testLocation() {
+        let firstLocation = getUsers().first
+        let expectedCity = "cardiff"
+        let city = firstLocation?.location.city ?? "not loading"
+        
+        XCTAssertEqual(expectedCity, city, "city should be \(expectedCity)")
+    }
 
 
+}
+
+extension PeopleAndAppleStockPricesTests {
+    
+    func getUsers() -> [Users] {
+        let users = UserData.getUsers()
+        return users
+    }
+    
 }
