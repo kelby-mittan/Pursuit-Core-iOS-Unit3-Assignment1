@@ -25,31 +25,28 @@ extension AppleStockData {
         }
         do {
             let data = try Data(contentsOf: file)
-            
             let stockData = try JSONDecoder().decode([AppleStockData].self, from: data)
             stock = stockData
             
         } catch {
             fatalError("contents failed to load \(error)")
         }
-        
         return stock
     }
     
     static func getStockSections() -> [[AppleStockData]] {
         let stocks = getStocks()
-        var monthTTitles = Set<String>()
+        var monthTitles = Set<String>()
         
         for stock in stocks {
             var label = stock.label
             var monthYear = label.components(separatedBy: " ")
             monthYear.remove(at: 1)
             label = monthYear.joined()
-            monthTTitles.insert(label)
+            monthTitles.insert(label)
         }
         
-        var sectionsArr = Array(repeating: [AppleStockData](), count: monthTTitles.count)
-        
+        var sectionsArr = Array(repeating: [AppleStockData](), count: monthTitles.count)
         var currentIndex = 0
         var currentMonth = stocks.first?.label.components(separatedBy: " ").first ?? ""
         for stock in stocks {

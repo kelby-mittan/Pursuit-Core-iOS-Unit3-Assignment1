@@ -32,7 +32,7 @@ class AppleStockViewController: UIViewController {
     
     func getAvg(for arr: [AppleStockData]) -> Double {
         var sum = 0.0
-        var avg = Double()
+        var avg = 0.0
         for stock in arr {
             sum += stock.open
         }
@@ -67,6 +67,12 @@ extension AppleStockViewController: UITableViewDataSource {
         cell.textLabel?.text = "\(stock.date)"
         cell.detailTextLabel?.text = "\(stock.open.description)"
         
+        if stock.open < stock.close {
+            cell.backgroundColor = .green
+        } else {
+            cell.backgroundColor = .red
+        }
+        
         return cell
     }
     
@@ -80,7 +86,7 @@ extension AppleStockViewController: UITableViewDataSource {
         let avg = getAvg(for: stockArr[section])
         let month = stockArr[section].first?.label.components(separatedBy: " ").first ?? ""
         let year = stockArr[section].first?.label.components(separatedBy: " ").last ?? ""
-        return "\(month) - 20\(year), average open: \(String(format: "%.2f", avg))"
+        return "\(month) - 20\(year)  average open: \(String(format: "%.2f", avg))"
     }
     
     

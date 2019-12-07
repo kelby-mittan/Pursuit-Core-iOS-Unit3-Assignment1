@@ -21,7 +21,9 @@ class RanUserViewController: UIViewController {
     
     var searchQuery = "" {
         didSet {
-            userArr = UserData.getUsers().filter { $0.name.fullName.lowercased().contains(searchQuery.lowercased()) || $0.name.fullNameReversed.lowercased().contains(searchQuery.lowercased()) }
+            if !searchQuery.isEmpty {
+                userArr = UserData.getUsers().filter { $0.name.fullName.lowercased().contains(searchQuery.lowercased()) || $0.name.fullNameReversed.lowercased().contains(searchQuery.lowercased()) }
+            }
         }
     }
     
